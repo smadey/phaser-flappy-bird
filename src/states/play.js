@@ -80,13 +80,13 @@ class PlayState {
      */
     let flapKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
     flapKey.onDown.addOnce(this._startGame, this)
-    flapKey.onDown.add(this._bird.flap, this._bird)
+    flapKey.onDown.add(this._bird._flap, this._bird)
 
     /**
      * Add mouse/touch controls
      */
     this.input.onDown.addOnce(this._startGame, this)
-    this.input.onDown.add(this._bird.flap, this._bird)
+    this.input.onDown.add(this._bird._flap, this._bird)
 
     this._gameover = false
 
@@ -137,7 +137,7 @@ class PlayState {
 
     this._instructionGroup.destroy()
 
-    this._bird.startControl()
+    this._bird._start()
 
     this._pipeGenerator = this.game.time.events.loop(Phaser.Timer.SECOND * 1.25, () => {
       let pipeY = this.game.rnd.integerInRange(-100, 100)
@@ -147,7 +147,7 @@ class PlayState {
         pipeGroup = new PipeGroup(this.game, this._pipes)
       }
 
-      pipeGroup.reset(this.game.width, pipeY)
+      pipeGroup._reset(this.game.width, pipeY)
     }, this)
     this._pipeGenerator.timer.start()
 
@@ -167,15 +167,15 @@ class PlayState {
       this._pipeHitSound.play()
     }
 
-    this._ground.stop()
+    this._ground._stop()
 
-    this._bird.stopControl()
+    this._bird._stop()
 
-    this._pipes.forEach(pipeGroup => pipeGroup.stop())
+    this._pipes.forEach(pipeGroup => pipeGroup._stop())
     this._pipeGenerator.timer.stop()
 
     this._scoreboard = new Scoreboard(this.game)
-    this._scoreboard.show(this._score)
+    this._scoreboard._show(this._score)
     this.game.add.existing(this._scoreboard)
   }
 }

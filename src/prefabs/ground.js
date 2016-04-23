@@ -23,7 +23,7 @@ class Ground extends Phaser.TileSprite {
     this.body.immovable = true
   }
 
-  stop () {
+  _stop () {
     this.stopScroll()
   }
 }

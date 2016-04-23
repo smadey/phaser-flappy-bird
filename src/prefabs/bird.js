@@ -42,7 +42,7 @@ class Bird extends Phaser.Sprite {
     }
   }
 
-  flap () {
+  _flap () {
     if (!this.body.enable) {
       return
     }
@@ -60,11 +60,11 @@ class Bird extends Phaser.Sprite {
     this.game.add.tween(this).to({angle: -40}, 100).start()
   }
 
-  startControl () {
+  _start () {
     this.body.enable = true
   }
 
-  stopControl () {
+  _stop () {
     this.body.enable = false
     this.animations.stop('flap')
   }

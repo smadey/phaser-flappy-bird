@@ -22,7 +22,7 @@ class PipeGroup extends Phaser.Group {
     }
   }
 
-  reset (x, y) {
+  _reset (x, y) {
     this.topPipe.reset(0, 0)
 
     this.bottomPipe.reset(0, 440)
@@ -37,7 +37,7 @@ class PipeGroup extends Phaser.Group {
     this.exists = true
   }
 
-  stop () {
+  _stop () {
     this.setAll('body.velocity.x', 0)
   }
 }

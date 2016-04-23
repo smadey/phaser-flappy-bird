@@ -15,7 +15,7 @@ class Scoreboard extends Phaser.Group {
     this.bestScoreText = this.game.add.bitmapText(this.scoreboard.width - 10, 230, 'flappyfont', '', 18)
     this.add(this.bestScoreText)
 
-    let startButton = this.game.add.button(this.game.width / 2, 300, 'startButton', this.onStartClick, this)
+    let startButton = this.game.add.button(this.game.width / 2, 300, 'startButton', this._onStartClick, this)
     startButton.anchor.setTo(0.5, 0.5)
     this.add(startButton)
 
@@ -23,7 +23,7 @@ class Scoreboard extends Phaser.Group {
     this.y = this.game.height
   }
 
-  show (score) {
+  _show (score) {
     let bestScore
 
     this.scoreText.setText(score.toString())
@@ -71,7 +71,7 @@ class Scoreboard extends Phaser.Group {
     }
   }
 
-  onStartClick () {
+  _onStartClick () {
     this.game.state.start('play')
   }
 }
